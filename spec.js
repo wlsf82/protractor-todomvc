@@ -40,10 +40,7 @@
      var todoLabel = element(by.className('ng-binding'));
      var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
      var toggleAll = element(by.id('toggle-all'));
-     var completedList = element(by.css('#todo-list')).
-       element(by.css('.completed')).
-         element(by.css('.view')).
-           element(by.css('.ng-binding'));
+     var completedList = element(by.css('#todo-list .completed .view .ng-binding'));
 
      text = 'Teste de digitação em campo texto'
 
