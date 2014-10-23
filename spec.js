@@ -12,7 +12,7 @@ describe('angularjs todo mvc homepage', function() {
   todomvcHelper.addTodoItem('Teste de digitação em campo texto');
 
   it('should be able to add items in the to do list', function() {
-  var todoLabel = element(by.className('ng-binding'));
+  var todoLabel = element(by.css('.view .ng-binding'));
   expect(todoLabel.getText()).toEqual(text);
   });
 
@@ -33,7 +33,7 @@ describe('angularjs todo mvc homepage', function() {
     var completedList = element(by.css('#todo-list .completed .view .ng-binding'));
     toggleAll.click();
     completedLink.click();
-    expect(completedList.getText()).toEqual(text);
+    expect(completedList.getText()).toContain(text);
   });
 
 });
