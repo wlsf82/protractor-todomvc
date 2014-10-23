@@ -1,57 +1,48 @@
-   // spec.js
-   describe('angularjs todo mvc homepage', function() {
+// spec.js
 
-   it('should have a title', function() {
-     browser.get('http://todomvc.com/examples/angularjs/#/');
-     expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
-   });
+var todomvcHelper = require('./todomvc.helper');
 
-   it('should be able to add items in the to do list', function() {
+describe('angularjs todo mvc homepage', function() {
 
-    var todoTextField = element(by.id('new-todo'));
-    var todoLabel = element(by.className('ng-binding'));
+  it('should have a title', function() {
+    browser.get('http://todomvc.com/examples/angularjs/#/');
+    expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
+  });
 
-    text = 'Teste de digitação em campo texto'
+  todomvcHelper.addTodoItem();
 
-    todoTextField.sendKeys(text);
+  it('should be able to add items in the to do list', function() {
+  var todoLabel = element(by.className('ng-binding'));
 
-    todoTextField.sendKeys(protractor.Key.ENTER);
+  expect(todoLabel.getText()).toEqual(text);
 
-    expect(todoLabel.getText()).toEqual(text);
+  });
 
-   });
+  it('should be able to clean the to do list', function() {
 
-   it('should be able to clean the to do list', function() {
+    var toogleAllCheckBox = element(by.id('toggle-all'));
+    var clearCompletedButton = element(by.id('clear-completed'));
+    var viewDiv = element(by.className('view'));
 
-     var toogleAllCheckBox = element(by.id('toggle-all'));
-     var clearCompletedButton = element(by.id('clear-completed'));
-     var viewDiv = element(by.className('view'));
+    toogleAllCheckBox.click();
 
-     toogleAllCheckBox.click();
+    clearCompletedButton.click();
 
-     clearCompletedButton.click();
+    expect(viewDiv.isPresent()).toBe(false);
+  });
 
-     expect(viewDiv.isPresent()).toBe(false);
+  todomvcHelper.addTodoItem();
 
-   });
+  it('should be able to complete items and then add them to the completed list', function() {
+    var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
+    var toggleAll = element(by.id('toggle-all'));
+    var completedList = element(by.css('#todo-list .completed .view .ng-binding'));
 
-   it('should be able to complete items and then add them to the completed list', function() {
-     var todoTextField = element(by.id('new-todo'));
-     var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
-     var toggleAll = element(by.id('toggle-all'));
-     var completedList = element(by.css('#todo-list .completed .view .ng-binding'));
+    toggleAll.click();
 
-     text = 'Teste de digitação em campo texto'
+    completedLink.click();
 
-     todoTextField.sendKeys(text);
-     todoTextField.sendKeys(protractor.Key.ENTER);
-
-     toggleAll.click();
-
-     completedLink.click();
-
-     expect(completedList.getText()).toEqual(text);
-
-   });
+    expect(completedList.getText()).toEqual(text);
+  });
 
 });
