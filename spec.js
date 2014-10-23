@@ -6,7 +6,7 @@
      expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
    });
 
-   it('should be able to type a text in the text field, press enter, and verify the result', function() {
+   it('should be able to add items in the to do list', function() {
 
     var todoTextField = element(by.id('new-todo'));
     var todoLabel = element(by.className('ng-binding'));
@@ -21,7 +21,7 @@
 
    });
 
-   it('should clean the items from the list and verify that no items are available in the list', function() {
+   it('should be able to clean the to do list', function() {
 
      var toogleAllCheckBox = element(by.id('toggle-all'));
      var clearCompletedButton = element(by.id('clear-completed'));
@@ -35,18 +35,26 @@
 
    });
 
-   it('should insert a new item in the to do list, check it as done and then verify if it is in the complete list', function() {
+   it('should be able to complete items and then add them to the completed list', function() {
      var todoTextField = element(by.id('new-todo'));
      var todoLabel = element(by.className('ng-binding'));
      var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
+     var toggleAll = element(by.id('toggle-all'));
+     var completedList = element(by.css('#todo-list')).
+       element(by.css('.completed')).
+         element(by.css('.view')).
+           element(by.css('.ng-binding'));
 
      text = 'Teste de digitação em campo texto'
 
      todoTextField.sendKeys(text);
-
      todoTextField.sendKeys(protractor.Key.ENTER);
 
+     toggleAll.click();
+
      completedLink.click();
+
+     expect(completedList.getText()).toEqual(text);
 
    });
 
