@@ -9,7 +9,7 @@ describe('angularjs todo mvc homepage', function() {
     expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
   });
 
-  todomvcHelper.addTodoItem();
+  todomvcHelper.addTodoItem('Teste de digitação em campo texto');
 
   it('should be able to add items in the to do list', function() {
   var todoLabel = element(by.className('ng-binding'));
@@ -31,7 +31,7 @@ describe('angularjs todo mvc homepage', function() {
     expect(viewDiv.isPresent()).toBe(false);
   });
 
-  todomvcHelper.addTodoItem();
+  todomvcHelper.addTodoItem('teste');
 
   it('should be able to complete items and then add them to the completed list', function() {
     var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
