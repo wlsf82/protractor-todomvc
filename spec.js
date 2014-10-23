@@ -2,7 +2,7 @@
    describe('angularjs todo mvc homepage', function() {
 
    it('should have a title', function() {
-     browser.get('http://todomvc.com/architecture-examples/angularjs/#/');
+     browser.get('http://todomvc.com/examples/angularjs/#/');
      expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
    });
 
@@ -32,6 +32,21 @@
      clearCompletedButton.click();
 
      expect(viewDiv.isPresent()).toBe(false);
+
+   });
+
+   it('should insert a new item in the to do list, check it as done and then verify if it is in the complete list', function() {
+     var todoTextField = element(by.id('new-todo'));
+     var todoLabel = element(by.className('ng-binding'));
+     var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
+
+     text = 'Teste de digitação em campo texto'
+
+     todoTextField.sendKeys(text);
+
+     todoTextField.sendKeys(protractor.Key.ENTER);
+
+     completedLink.click();
 
    });
 
