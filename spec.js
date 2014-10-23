@@ -37,7 +37,6 @@
 
    it('should be able to complete items and then add them to the completed list', function() {
      var todoTextField = element(by.id('new-todo'));
-     var todoLabel = element(by.className('ng-binding'));
      var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
      var toggleAll = element(by.id('toggle-all'));
      var completedList = element(by.css('#todo-list .completed .view .ng-binding'));
