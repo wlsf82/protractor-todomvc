@@ -13,21 +13,15 @@ describe('angularjs todo mvc homepage', function() {
 
   it('should be able to add items in the to do list', function() {
   var todoLabel = element(by.className('ng-binding'));
-
   expect(todoLabel.getText()).toEqual(text);
-
   });
 
   it('should be able to clean the to do list', function() {
-
     var toogleAllCheckBox = element(by.id('toggle-all'));
     var clearCompletedButton = element(by.id('clear-completed'));
     var viewDiv = element(by.className('view'));
-
     toogleAllCheckBox.click();
-
     clearCompletedButton.click();
-
     expect(viewDiv.isPresent()).toBe(false);
   });
 
@@ -37,11 +31,8 @@ describe('angularjs todo mvc homepage', function() {
     var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
     var toggleAll = element(by.id('toggle-all'));
     var completedList = element(by.css('#todo-list .completed .view .ng-binding'));
-
     toggleAll.click();
-
     completedLink.click();
-
     expect(completedList.getText()).toEqual(text);
   });
 
