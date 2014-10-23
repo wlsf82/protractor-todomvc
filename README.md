@@ -19,4 +19,4 @@ It can also provide information about which browser will be used for testing, or
 
 The spec.js file has the tests themselves.
 
-And the *.helper.js files are just helpers to keep the repeated complex logic separated from the test.
+And the *.helper.js files are just helpers to keep the repeated complex logic code separated from the test.
