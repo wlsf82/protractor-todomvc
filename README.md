@@ -20,3 +20,13 @@ It can also provide information about which browser will be used for testing, or
 The spec.js file has the tests themselves.
 
 And the *.helper.js files are just helpers to keep the repeated complex logic code separated from the test.
+
+_____________________________________________________________________________________________________
+
+To install the protractor version focused on performance testing, use the below command:
+
+npm install -g protractor-perf
+
+And then to execute the protractor tests focusing on performance metrics, use the following command on the folder where the tests are:
+
+protractor-perf conf.js
