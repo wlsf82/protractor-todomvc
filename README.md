@@ -27,6 +27,6 @@ To install the protractor version focused on performance testing, use the below 
 
 npm install -g protractor-perf
 
-And then to execute the protractor tests focusing on performance metrics, use the following command on the folder where the tests are:
+And then to execute the protractor tests focusing on performance metrics, using the following command on the folder where the tests are:
 
 protractor-perf conf.js
