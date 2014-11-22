@@ -9,8 +9,8 @@ module.exports = {
       todoTextField.sendKeys(protractor.Key.ENTER);
     });
   },
-  verifyTitleElementText : function(titleType, titleText) {
-    it('should verify the text of a title element', function() {
+  verifyHeaderElementText : function(titleType, titleText) {
+    it('should verify the text of a header element', function() {
       var typeOfTitle = element(by.css(titleType));
       expect(typeOfTitle.getText()).toEqual(titleText);
     });

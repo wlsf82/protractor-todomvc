@@ -9,8 +9,8 @@ describe('angularjs todo mvc homepage', function() {
     expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
   });
 
-  todomvcHelper.verifyTitleElementText('h3', 'AngularJS');
-  todomvcHelper.verifyTitleElementText('h1', 'todos');
+  todomvcHelper.verifyHeaderElementText('h3', 'AngularJS');
+  todomvcHelper.verifyHeaderElementText('h1', 'todos');
 
   it('should verify if the main web elements are present in the page', function() {
     var newTodo = element(by.id('new-todo'));
