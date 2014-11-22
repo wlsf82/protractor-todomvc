@@ -9,10 +9,10 @@ module.exports = {
       todoTextField.sendKeys(protractor.Key.ENTER);
     });
   },
-  verifyHeaderElementText : function(titleType, titleText) {
+  verifyHeaderElementText : function(headerType, headerText) {
     it('should verify the text of a header element', function() {
-      var typeOfTitle = element(by.css(titleType));
-      expect(typeOfTitle.getText()).toEqual(titleText);
+      var typeOfHeader = element(by.css(headerType));
+      expect(typeOfHeader.getText()).toEqual(headerText);
     });
   }
 };
