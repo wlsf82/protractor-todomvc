@@ -4,10 +4,6 @@ var todomvcHelper = require('./todomvc.helper');
 
 describe('angularjs todo mvc homepage', function() {
 
-  it('should verify if the main web elements are present in the page', function() {
-
-  });
-
   it('should have a title', function() {
     browser.get('http://todomvc.com/examples/angularjs/#/');
     expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
@@ -17,11 +13,7 @@ describe('angularjs todo mvc homepage', function() {
   todomvcHelper.verifyTitleElementText('h1', 'todos');
 
   it('should verify if the main web elements are present in the page', function() {
-    // var leftTitle = element(by.css('h3'));
-    // var mainTitle = element(by.css('h1'));
     var newTodo = element(by.id('new-todo'));
-    // expect(leftTitle.getText()).toEqual('AngularJS');
-    // expect(mainTitle.getText()).toEqual('todos');
     expect(newTodo.isPresent()).toBe(true);
   });
 
