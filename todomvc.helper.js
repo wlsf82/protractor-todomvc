@@ -8,5 +8,11 @@ module.exports = {
       todoTextField.sendKeys(text);
       todoTextField.sendKeys(protractor.Key.ENTER);
     });
+  },
+  verifyHeaderElementText : function(headerType, headerText) {
+    it('should verify the text of a header element', function() {
+      var typeOfHeader = element(by.css(headerType));
+      expect(typeOfHeader.getText()).toEqual(headerText);
+    });
   }
 };
