@@ -16,6 +16,14 @@ describe('angularjs todo mvc homepage', function() {
     }
   });
 
+  todomvcHelper.verifyHeaderElementText('h3', 'AngularJS');
+  todomvcHelper.verifyHeaderElementText('h1', 'todos');
+
+  it('should verify if the main web elements are present in the page', function() {
+    var newTodo = element(by.id('new-todo'));
+    expect(newTodo.isPresent()).toBe(true);
+  });
+
   todomvcHelper.addTodoItem('Teste de digitação em campo texto');
 
   it('should be able to add items in the to do list', function() {
