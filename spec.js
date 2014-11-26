@@ -13,6 +13,9 @@ describe('angularjs todo mvc homepage', function() {
     stream.end();
   }
 
+  //TODO criar helper para tirar screenshots.
+  //TODO refatorar path das screenshots para que a numeração seja incrementada automaticamente
+
   var perf = new ProtractorPerf(protractor);
   it('should have a title', function() {
     browser.get('http://todomvc.com/examples/angularjs/#/');
