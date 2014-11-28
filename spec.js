@@ -20,7 +20,7 @@ describe('angularjs todo mvc homepage', function() {
   it('should have a title', function() {
     browser.get('http://todomvc.com/examples/angularjs/#/');
     browser.takeScreenshot().then(function (png) {
-      writeScreenShot(png, 'tmp/screenshots/exception-0.png');
+      writeScreenShot(png, 'tmp/screenshots/screenshot-0.png');
     });
     perf.start();
     expect(browser.getTitle()).toEqual('AngularJS • TodoMVC');
@@ -37,7 +37,7 @@ describe('angularjs todo mvc homepage', function() {
   it('should verify if the main web elements are present in the page', function() {
     var newTodo = element(by.id('new-todo'));
     browser.takeScreenshot().then(function (png) {
-      writeScreenShot(png, 'tmp/screenshots/exception-1.png');
+      writeScreenShot(png, 'tmp/screenshots/screenshot-1.png');
     });
     expect(newTodo.isPresent()).toBe(true);
   });
@@ -47,7 +47,7 @@ describe('angularjs todo mvc homepage', function() {
   it('should be able to add items in the to do list', function() {
     var todoLabel = element(by.css('.view .ng-binding'));
     browser.takeScreenshot().then(function (png) {
-      writeScreenShot(png, 'tmp/screenshots/exception-2.png');
+      writeScreenShot(png, 'tmp/screenshots/screenshot-2.png');
     });
     perf.start();
     expect(todoLabel.getText()).toEqual(text);
@@ -66,7 +66,7 @@ describe('angularjs todo mvc homepage', function() {
     toogleAllCheckBox.click();
     clearCompletedButton.click();
     browser.takeScreenshot().then(function (png) {
-      writeScreenShot(png, 'tmp/screenshots/exception-3.png');
+      writeScreenShot(png, 'tmp/screenshots/screenshot-3.png');
     });
     expect(viewDiv.isPresent()).toBe(false);
     perf.stop();
@@ -86,7 +86,7 @@ describe('angularjs todo mvc homepage', function() {
     toggleAll.click();
     completedLink.click();
     browser.takeScreenshot().then(function (png) {
-      writeScreenShot(png, 'tmp/screenshots/exception-4.png');
+      writeScreenShot(png, 'tmp/screenshots/screenshot-4.png');
     });
     expect(completedList.getText()).toContain(text);
     perf.stop();
