@@ -17,7 +17,7 @@ describe('angularjs todo mvc homepage', function() {
   //TODO refatorar path das screenshots para que a numeração seja incrementada automaticamente
 
   var perf = new ProtractorPerf(protractor);
-  it('should have a title', function() {
+  it('should have a title', function () {
     browser.get('http://todomvc.com/examples/angularjs/#/');
     browser.takeScreenshot().then(function (png) {
       writeScreenShot(png, 'tmp/screenshots/screenshot-0.png');
@@ -31,8 +31,13 @@ describe('angularjs todo mvc homepage', function() {
     }
   });
 
-  todomvcHelper.verifyHeaderElementText('h3', 'AngularJS');
-  todomvcHelper.verifyHeaderElementText('h1', 'todos');
+  it('should verify left sidebar hearder', function () {
+    todomvcHelper.verifyHeaderElementText('h3', 'AngularJS');
+  });
+
+  it('should verify main header', function () {
+    todomvcHelper.verifyHeaderElementText('h1', 'todos');
+  });
 
   it('should verify if the main web elements are present in the page', function() {
     var newTodo = element(by.id('new-todo'));
@@ -42,9 +47,11 @@ describe('angularjs todo mvc homepage', function() {
     expect(newTodo.isPresent()).toBe(true);
   });
 
-  todomvcHelper.addTodoItem('Teste de digitação em campo texto');
+  it('should be able to add items in the to do list', function () {
+    var text = 'Teste de digitação em campo texto';
 
-  it('should be able to add items in the to do list', function() {
+    todomvcHelper.addTodoItem(text);
+
     var todoLabel = element(by.css('.view .ng-binding'));
     browser.takeScreenshot().then(function (png) {
       writeScreenShot(png, 'tmp/screenshots/screenshot-2.png');
@@ -58,10 +65,10 @@ describe('angularjs todo mvc homepage', function() {
     }
   });
 
-  it('should be able to clean the to do list', function() {
-    var toogleAllCheckBox = element(by.id('toggle-all'));
-    var clearCompletedButton = element(by.id('clear-completed'));
-    var viewDiv = element(by.className('view'));
+  it('should be able to clean the to do list', function () {
+    var toogleAllCheckBox = element(by.id('toggle-all')),
+          clearCompletedButton = element(by.id('clear-completed')),
+          viewDiv = element(by.className('view'));
     perf.start();
     toogleAllCheckBox.click();
     clearCompletedButton.click();
@@ -76,12 +83,12 @@ describe('angularjs todo mvc homepage', function() {
     }
   });
 
-  todomvcHelper.addTodoItem('teste');
-
-  it('should be able to complete items and then add them to the completed list', function() {
-    var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last();
-    var toggleAll = element(by.id('toggle-all'));
-    var completedList = element(by.css('#todo-list .completed .view .ng-binding'));
+  it('should be able to complete items and then add them to the completed list', function () {
+    var text = 'teste';
+    todomvcHelper.addTodoItem(text);
+    var completedLink = element.all(by.css('a[ng-class="{selected: status == \'completed\'}"')).last(),
+        toggleAll = element(by.id('toggle-all')),
+        completedList = element(by.css('#todo-list .completed .view .ng-binding'));
     perf.start();
     toggleAll.click();
     completedLink.click();
