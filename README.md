@@ -1,5 +1,8 @@
 protractor-todomvc
 ==================
+
+⚠️ **This project has been deprecated.** ⚠️
+
 To install protractor and the webdriver-manager, run the following command:
 
 npm install -g protractor
